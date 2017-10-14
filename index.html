@@ -1,0 +1,113 @@
+<!DOCTYPE html><html class=''>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Josefin+Slab:700|Lato|Ubuntu' rel='stylesheet' type='text/css'>
+<style>
+body {
+	font-family: 'Ubuntu', serif;
+	font-size: 16px;
+	margin: 8px;
+}
+h1 {
+	font-family: 'Josefin Slab', serif;
+	font-size: 60px;
+	line-height: 35px;
+	font-weight: bold;
+	text-align: center;
+	border-bottom: 3px solid;
+}
+.col {
+	margin: 0px 25px 0px 0px;
+}
+
+.col-left {
+	-webkit-box-flex: 3;
+	-ms-flex: 3;
+	flex: 3;	  
+}  
+
+.col-right {
+	-webkit-box-flex: 3;
+	-ms-flex: 3;
+	flex: 3;
+}
+
+@media only screen and (min-width: 640px) {
+	.layout {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	.col-right {
+		margin-left: 20px;
+	}
+}
+
+.box {
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+textarea {
+	border: 2px solid black;
+	color: #444;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	letter-spacing: 1px;
+	padding: 10px;
+	width: 100%;
+	resize: none;
+}
+#output {
+	background-color: #eaeaea;
+}
+button {
+	width: 300px;
+	margin: 30px auto 0;
+	padding: 10px;
+	-webkit-appearance: none;
+	 -moz-appearance: none;
+		  appearance: none;
+	cursor: pointer;
+	border: 2px solid;
+	line-height: 26px;
+	background-color: black;
+	color: white;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+}
+textarea:focus, button:focus {
+  outline: none;
+}
+</style></head>
+<body>
+	<h1>trie compiler</h1>
+	<div class="layout">
+		<div class="col-left col">
+			<textarea rows="10" id="input" placeholder="enter some text"></textarea>
+		</div>
+		<div class="col-right col">
+			<textarea rows="10" id="output" readonly></textarea>
+		</div>  
+	</div>
+	<div class="box">
+		<button id="compile">compile</button>
+		<button id="demo">show demo</button>
+	</div>
+<script>
+function CHR(t){return BASE64[t]}function ORD(t){return BASE64_CACHE[t]}function BitString(t){this.init(t)}function RankDirectory(t,i,e,n,r){this.init(t,i,e,n,r)}function FrozenTrieNode(t,i,e,n,r,s){this.trie=t,this.index=i,this.letter=e,this["final"]=n,this.firstChild=r,this.childCount=s}function FrozenTrie(t,i,e){this.init(t,i,e)}var BASE64="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_",W=6,BASE64_CACHE={A:0,B:1,C:2,D:3,E:4,F:5,G:6,H:7,I:8,J:9,K:10,L:11,M:12,N:13,O:14,P:15,Q:16,R:17,S:18,T:19,U:20,V:21,W:22,X:23,Y:24,Z:25,a:26,b:27,c:28,d:29,e:30,f:31,g:32,h:33,i:34,j:35,k:36,l:37,m:38,n:39,o:40,p:41,q:42,r:43,s:44,t:45,u:46,v:47,w:48,x:49,y:50,z:51,0:52,1:53,2:54,3:55,4:56,5:57,6:58,7:59,8:60,9:61,"-":62,_:63},L1=1024,L2=32;BitString.MaskTop=[63,31,15,7,3,1,0],BitString.BitsInByte=[0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7,4,5,5,6,5,6,6,7,5,6,6,7,6,7,7,8],BitString.prototype={init:function(t){this.bytes=t,this.length=this.bytes.length*W},getData:function(){return this.bytes},get:function(t,i){if(W>=t%W+i)return(ORD(this.bytes[t/W|0])&BitString.MaskTop[t%W])>>W-t%W-i;var e=ORD(this.bytes[t/W|0])&BitString.MaskTop[t%W],n=W-t%W;for(t+=n,i-=n;i>=W;)e=e<<W|ORD(this.bytes[t/W|0]),t+=W,i-=W;return i>0&&(e=e<<i|ORD(this.bytes[t/W|0])>>W-i),e},count:function(t,i){for(var e=0;i>=8;)e+=BitString.BitsInByte[this.get(t,8)],t+=8,i-=8;return e+BitString.BitsInByte[this.get(t,i)]},rank:function(t){for(var i=0,e=0;t>=e;e++)this.get(e,1)&&i++;return i}},RankDirectory.prototype={init:function(t,i,e,n,r){this.directory=new BitString(t),this.data=new BitString(i),this.l1Size=n,this.l2Size=r,this.l1Bits=Math.ceil(Math.log(e)/Math.log(2)),this.l2Bits=Math.ceil(Math.log(n)/Math.log(2)),this.sectionBits=(n/r-1)*this.l2Bits+this.l1Bits,this.numBits=e},getData:function(){return this.directory.getData()},rank:function(t,i){if(0===t)return i-this.rank(1,i)+1;var e=0,n=i,r=0;return n>=this.l1Size&&(r=(n/this.l1Size|0)*this.sectionBits,e=this.directory.get(r-this.l1Bits,this.l1Bits),n%=this.l1Size),n>=this.l2Size&&(r+=(n/this.l2Size|0)*this.l2Bits,e+=this.directory.get(r-this.l2Bits,this.l2Bits)),e+=this.data.count(i-i%this.l2Size,i%this.l2Size+1)},select:function(t,i){for(var e=this.numBits,n=-1,r=-1;e-n>1;){var s=(e+n)/2|0,h=this.rank(t,s);h===i?(r=s,e=s):i>h?n=s:e=s}return r}},FrozenTrieNode.prototype={getChildCount:function(){return this.childCount},getChild:function(t){return this.trie.getNodeByIndex(this.firstChild+t)}},FrozenTrie.prototype={init:function(t,i,e){this.data=new BitString(t),this.directory=new RankDirectory(i,t,2*e+1,L1,L2),this.letterStart=2*e+1},getNodeByIndex:function(t){var i=1===this.data.get(this.letterStart+6*t,1),e=String.fromCharCode(this.data.get(this.letterStart+6*t+1,5)+"a".charCodeAt(0));"{"==e&&(e=" "),"|"==e&&(e=","),"}"==e&&(e="'"),"~"==e&&(e="-");var n=this.directory.select(0,t+1)-t,r=this.directory.select(0,t+2)-t-1;return new FrozenTrieNode(this,t,e,i,n,r-n)},getRoot:function(){return this.getNodeByIndex(0)},lookup:function(t){for(var i=this.getRoot(),e=0;e<t.length;e++){for(var n,r=0;r<i.getChildCount()&&(n=i.getChild(r),n.letter!==t[e]);r++);if(r===i.getChildCount())return!1;i=n}return i["final"]}};
+</script>
+<script>
+	document.getElementById("demo").addEventListener("click", function(event) {
+		document.getElementById('input').value = "compress\r\ncompressed\r\ncompresses\r\ncompressibility\r\ncompressible\r\ncompressing\r\ncompression\r\ncompressions\r\ncompressor\r\ncompressors"
+		
+		document.getElementById("search").click()
+	})
+	document.getElementById("compile").addEventListener("click", function(event) {
+
+	})
+</script>
+</body></html>

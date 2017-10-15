@@ -1,5 +1,9 @@
 # trie compiler
-Compress wordlists for javascript web apps using packed trie algorithms. Achieve approx. 50% compression while maintaining fast - O(1) - lookup speed. See it in action [here](https://monolithpl.github.io/trie-compiler/)
+Compress wordlists for javascript web apps using packed trie algorithms.
+
+Achieves approx. 50% compression while maintaining fast - O(1) - lookup speed.
+
+See it in action [here](https://monolithpl.github.io/trie-compiler/)
 
 ### features
 - test performance of javascript trie algorithms in your browser using:
@@ -8,6 +12,9 @@ Compress wordlists for javascript web apps using packed trie algorithms. Achieve
 - fully client-side and portable - works offline, too!
 - zero framework rubbish - pure vanilla javascript with zero overhead - tiny code with zero external dependencies
 - responsive mobile-first layout
+
+### screenshot / example
+[![trie compiler screenshot](https://monolithpl.github.io/trie-compiler/trie.png)](https://monolithpl.github.io/trie-compiler/)
 
 ### demo
 [check it out here](https://monolithpl.github.io/trie-compiler/)
@@ -22,4 +29,4 @@ Read more about performance-first string lookups in javascript using tries here:
 
 MIT License
 
-Copyright 2017 Wiktor Jakubczyc
+Copyright 2017 [Wiktor Jakubczyc](https://vocab.today/teacher)

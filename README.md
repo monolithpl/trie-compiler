@@ -29,7 +29,7 @@ Read more about performance-first string lookups in javascript using tries here:
 
 MIT License
 
-Copyright 2017 [Wiktor Jakubczyc](https://vocab.today/teacher)
+Copyright 2017 [Wiktor Jakubczyc](http://vocab.today/contact)
 
 ---
 

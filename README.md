@@ -30,3 +30,7 @@ Read more about performance-first string lookups in javascript using tries here:
 MIT License
 
 Copyright 2017 [Wiktor Jakubczyc](https://vocab.today/teacher)
+
+---
+
+Part of [vocab.today teacher's resources toolkit](https://vocab.today/teacher)

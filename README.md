@@ -14,7 +14,7 @@ See it in action [here](https://monolithpl.github.io/trie-compiler/)
 - responsive mobile-first layout
 
 ### screenshot / example
-[![trie compiler screenshot](https://monolithpl.github.io/trie-compiler/trie.png)](https://monolithpl.github.io/trie-compiler/)
+[![trie compiler screenshot](https://monolithpl.github.io/trie-compiler/trie-screenshot.png)](https://monolithpl.github.io/trie-compiler/)
 
 ### demo
 [check it out here](https://monolithpl.github.io/trie-compiler/)
